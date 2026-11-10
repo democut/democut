@@ -1,0 +1,15 @@
+{
+  "name": "democut",
+  "owner": {
+    "name": "DemoCut",
+    "url": "https://democut.app"
+  },
+  "description": "DemoCut: your coding agent makes the demo video.",
+  "plugins": [
+    {
+      "name": "democut",
+      "source": "./",
+      "description": "Your coding agent makes the demo video with DemoCut."
+    }
+  ]
+}
