@@ -1,163 +1,210 @@
-# Launch: what a good DemoCut launch film looks like
+# Launch: a designed film, with the real product as its material
 
-For a launch, promo, announcement or feature film: a short, designed piece that sells one idea.
-A walkthrough or tutorial follows `TASTE.md` instead. The flow in `democut instructions`
-(preflight to critic) still applies; this page replaces TASTE.md's look
-and pacing. The user's request and the product's own brand win over it.
+For a launch, promo, announcement or feature film. A walkthrough or tutorial follows `TASTE.md`
+instead. Preflight, sign-ins, recording rules, the critic and export in `democut instructions`
+still apply. This page replaces TASTE.md's look and pacing, and the walkthrough habit of
+"one take, zooms, a voice, subtitles". The user's request and the product's own brand win over it.
 
-## Story first
+**The one rule: a launch film is composed, not recorded.** At least 70% of its running time is
+designed scenes that you draw as motion clips. The product appears in them as real pieces you
+captured (stills, lifted elements), staged large. Live footage is used only where the product
+must be seen working, 3 s at a time at most, and it is staged too. If your timeline is a take
+with a title at the front and a card at the end, you have made a walkthrough.
 
-1. Write three storylines, one line each: hook → tension → reveal → proof → payoff → claim →
-   end card. Pick one; say why the other two lost.
-2. List the 3–5 beliefs the viewer must hold at the end. Each beat buys exactly one: a beat
-   that buys none is cut, a belief no beat buys is a gap.
-3. Each beat causes the next: a click, a result, an object that becomes the next world.
-4. Then fill the SPEC with numbers. Every adjective left in it becomes the generic default.
+## 1. Story and spec (before any tool)
+
+1. Three storylines, one line each: hook, tension, reveal, proof, payoff, claim, end card.
+   Pick one and say why the others lost.
+2. The 3 to 5 beliefs the viewer must leave with. Each beat buys exactly one.
+3. **The device.** Find the one mechanic that is the product (text turning bright as it is
+   typed; a card being dragged; a diff resolving) and make it the film's motion language: how
+   titles arrive, how scenes change. A film with a device looks directed; one without looks
+   assembled. Write it in one sentence.
+4. Fill the SPEC with numbers. Every adjective left in it becomes the generic default.
 
 ```text
-GOAL     what the viewer feels or does at the end      PRODUCT  the real product and its takes
-OUTPUT   W×H, fps, length band                         BELIEFS  B1…B5, each bought by beat n
-LOOK     ground, ink, one accent and where; type size per role
-MOTION   ease and seconds per role; springs as damping
-SHOTS    per beat: seconds, card, the ONE hero move, what is read and how long, sound, hand-off
+GOAL     what the viewer feels or does at the end      PRODUCT  the real product; its takes and stills
+OUTPUT   W×H, fps, seconds, BPM, frames per beat       BELIEFS  B1…B5, each bought by beat n
+DEVICE   the product's own mechanic, used as the film's motion
+LOOK     ground(s), ink, waiting ink, one accent: hex, all read from the product's own CSS;
+         display face and size in px; hero size as % of the frame
+MOTION   ease and seconds per role
+SCENES   per scene: beats (from, to), designed or live, the ONE hero move, what is read, the
+         sound, the hand-off to the next
 QA       the frames to check and what each must show
 ```
 
-| Format | Length | Beats | Beat |
+| Format | Length | Scenes | Designed share |
 | --- | --- | --- | --- |
-| Social cut | 12–20 s | 5–7 | 1.8–3 s |
-| Launch film | 20–45 s | 7–12 | 2–4 s |
-| Feature film | 45–75 s | 10–16 | 3–6 s; a demo beat holds 7–10 s while the UI acts |
+| Social cut | 12 to 20 s | 5 to 7 | 80% or more |
+| Launch film | 20 to 45 s | 8 to 14 | 70% or more |
+| Feature film | 45 to 75 s | 12 to 20 | 60% or more; a demo beat may hold 7 to 10 s while the UI acts |
 
-- **Pace.** Something new every 2–4 s; over 3 s unchanged is dead. The hook lands by 1.5 s.
-  Frame 0 is the thumbnail: product or text, never empty. Montage cuts run 0.13–0.8 s,
-  accelerating; hold 0.3–0.75 s before a payoff, which plays at real speed.
-- **Text.** At least 2.6% of the short side (element `--size` 18.7; 28 px at 1080); titles
-  4–9% of the height (size 29–65). On screen 0.5 s + 0.3 s a word (one word 0.8 s, two
-  1.1 s); the last line 2 s. Too many words: cut words, never shrink type. Landed text is still;
-  its exit is 40–50% shorter than its entrance. One accent word a line, only if it means
-  something.
-- **Eases by role** (`democut element key --ease`, `democut zoom --ease`): arrival `expo.out`
-  or `power4.out` 0.3–0.6 s; camera move `inOut` 0.4–0.7 s; exit `in` at 0.6× its entrance; a
-  pop `spring` (`--damping 0.75 --response 0.45`); rotation or progress `linear`. Damping 1
-  never bounces, 0.7–0.85 is premium, 0.45–0.6 playful (rare), under 0.3 a cartoon. Opacity
-  never overshoots. The next move starts when the last is 30–50% done; stagger words 60–120 ms,
-  list items 40–80 ms. Vary by role: one ease on everything is the generic default.
-- **Camera.** Magnify the action 1.6–3× (a prompt 1.6, a dashboard 1.7, a modal 1.4, one
-  control up to 3) with a zoom or an element lift, never by shrinking the canvas. A move takes
-  0.4–0.6 s, arrives where the cursor acts, then holds while the UI acts. A pull-back snaps to
-  0.56–0.77 of the scale, then a 0.3–0.6 s tail. The hero fills 40% of the frame or more.
-  Budget: one push and its pull-back a beat, 3 s apart or more; a punch-in (8) or zoom through
-  a button (11) counts as a cut.
-- **Cursor.** `style.update {cursorPress:"designed", cursorEntrance:1.8}` in
-  `democut call edit`: 2 frames down, 3 up, the control reacting a frame after the bottom.
-  A cursor 4–7% of the height (`cursorScale`, a 0.5–4 multiplier; check a rendered frame).
-  Park 2 frames before an obvious button, 3–5 before a switch, 5–15 when the camera zooms onto it. The click causes the next beat on that frame.
-- **Blur.** Keys and eased zooms blur in the export (180° shutter): 6–12 px on text-sized
-  elements, 15–20 px full frame. Judge it on a 6 fps motion sheet (previews don't blur elements).
-- **Sound.** `democut sfx --auto`: real recorded clicks, whooshes and impacts on the clicks,
-  push-ins and lifts. About one a beat, never one per key; a riser only for a film that builds.
-- **End.** The mark lands centred in the last 5–10%, 15–30% of the width. A real CTA (the
-  button, or the command to type) is on screen 1.5–3 s, its entrance included; after the last
-  move settles, hold 1.4 s at most (`endHold`), then cut. A Free export appends DemoCut's card: design for that cut.
+## 2. The look comes from the product
 
-## Shot cards
+- Read the product's own colours and faces from its page (`democut browser eval` on
+  `getComputedStyle`: background, text, muted text, accent; the `font-family` of its headline
+  and of its body). Those are your ground, ink, waiting ink and accent. Use the product's own
+  fonts when they are open-licensed (bundle the files beside the clip); otherwise the closest
+  bundled face, and say so.
+- Because your ground is the page's ground, a captured piece of UI sits on it with no border, no
+  matte and no shadow: it simply is on the canvas. This is what makes "lifted" UI look designed
+  instead of pasted.
+- A second ground for floods: the accent, full frame, with the ground colour as its ink.
+- Type is big. A hero line is 15 to 30% of the frame height and fills 60 to 90% of the width.
+  A quiet line is 3 to 5%. Nothing between: the contrast is the design. At most 4 words a line.
+- No narration by default and no subtitles: the type carries the words. Add a voice only when
+  the user asks for one, and then drop the type that repeats it.
 
-Use when · seconds · how, with the numbers that set its feel · pitfall.
+## 3. How to build it
 
-1. **Kinetic title.** The hook · 1.2–2 · `democut motion template kinetic-title`, rendered with
-   `--add --start 0`; or a text element a word, keyed scale 1.15→1 and opacity 0→1 by 0.25 s
-   `expo.out`, 0.07–0.1 s apart, size 40–65 · over 1.4× is a bounce; one entrance a film.
-2. **Hero push-in.** First look at the product · 2–3 · `democut zoom --element '<sel>' --start
-   <s> --end <s> --ease inOut`, 1.6–2×, 0.4–0.6 s from 0.6–1 s in · the UI acts during the hold; over 0.8 s creeps.
-3. **Element lift.** The proof is one component · 2.5–4 · `democut browser track --name card
-   --selector '<css>'` before the take, `democut element capture --name card --scale 4`, then
-   `democut element lift --name card --at <s> --scale 2.2 --hold 1.2`, which casts
-   `shadow:"contact"` (`overlay.update` sets it on others; motion clips refuse it) · a
-   lift tops out at 3×: past it, with a zoom on top, capture at 4×; labels must not jump.
-4. **Wipe with a cause.** A transformation · 1.5–2.5 · a `--shape box` in the ground colour
-   keyed across x over 0.4–0.6 s `inOut` from the press frame, after 0.8 s of "before" · with
-   no cause on screen it is a slideshow.
-5. **Counter roll.** A number the product computed · 0.8–1.2 + read · `democut motion template
-   counter` with its real values, rendered with `--add`; 9% of the height · a number the
-   product didn't produce is an invented claim.
-6. **Cursor entrance.** A scene's first click · 0.5–0.9 · `cursorEntrance` 1.5–2.2 · one cursor;
-   even-speed travel reads robotic.
-7. **Click-to-cause cut.** A click opens a new world · 5 frames · designed press, cut on the
-   reaction, the next shot arriving 1.04→1 on `expo.out`, one click sound · no ripple rings.
-8. **Punch-in.** A detail inside one scene · a cut, then the hold · `democut zoom --click <at>
-   --ease expo.out`, 1.6–2.5×, cut on an action · 2 a scene; a third of beat seams at most.
-   Review's `framingJump` there is expected.
-9. **Pull-back reveal.** The result returns to its system · 1 frame + 0.3–0.6 · a second zoom
-   `--transition direct --ease expo.out` at 0.56–0.77 of the first's scale · labels hold still.
-10. **Whip pan.** A sideways cause (swipe, next tab) · 0.2–0.4 · out on `in` toward the exit,
-    cut at the fastest frame, in on `expo.out` the same way · 2 a film; directions match.
-11. **Zoom through a button.** A launch or publish click · 0.6 + 0.35 · zoom `inOut` to it,
-    place its capture on its box (`overlay.add {kind:"image", from:{element, at}}`), key it to
-    scale 10 in 0.35 s on `in`, cut to a scene in its exact colour · once a film.
-12. **Object becomes the world.** Entering a detail from a card · 0.65 · key it to fill the
-    frame `inOut`; the next scene fades in over its last 40% · never crossfade worlds bare.
-13. **Result fills in.** The product doing the work · 2–7 · a 1.6–2× zoom settled before the
-    result; `timeline.speed` up to 2× on the dull middle, 1× for the payoff · no creeping push.
-14. **Word by word.** A claim line · 60–120 ms a word, then the read · an element a word keyed
-    opacity 0.3→1 in 0.13 s `expo.out`, no translate · never fade-and-slide-up.
-15. **Callout.** Directing the eye where a zoom would lose context · 0.3 in, the read, 0.15 out
-    · `--shape highlight` keyed scale 1.08→1 `expo.out`, the one accent · one at a time, no glow.
-16. **Lower third.** One phrase while the UI acts · the read · `--preset lower-third`, 6 words
-    at most, in from x −0.02 on `power4.out` 0.35 s, out 0.2 s `in` · never over the action.
-17. **Chapter line.** Between acts of a 30–45 s film · 0.8–1.1 · 1–2 words at size 43–65,
-    scale 1.06→1 in 0.2 s, on screen 0.8 s (one word) or 1.1 s (two) · over 3 a film is slides.
-18. **Montage.** Breadth after one deep proof · 2–4 · 4–8 real results cut 0.8, 0.6, 0.45, 0.3,
-    0.2 s, the last held 0.5 s with one impact · even cuts read as a slideshow.
-19. **End card.** Always last · 2.5–4 · `democut motion template end-card`, or the mark keyed
-    0.8→1 `expo.out` 0.5 s, the wordmark following at 40%; a real CTA on screen 1.5–3 s
-    with its entrance, still 1.4 s at most · never a docked logo or everything fading in at once.
+1. **Capture the material** in DemoCut's browser, before any design:
+   - the takes: one short take per live beat (5 to 10 s each), not one long session;
+   - stills: `democut browser screenshot` of each state you will stage (2 px a CSS px);
+   - boxes: one `democut browser eval` returning `getBoundingClientRect()` of every piece you
+     will lift (the number, the chart, each row), saved as JSON beside the still. A piece is then
+     a crop of the still at its box: pieces stay pixel-aligned with each other at any scale;
+   - make the page itself bigger when the product lets you (its own font-size or density
+     setting), so live footage needs less zoom.
+   - record at 1280×720: a 2× still is then 2560 px wide and is never upscaled on a 1920 canvas;
+   - read anything you will type or click after the page has settled and after your first click
+     on it (a click can restart a test or re-sort a list).
+2. **One timeline file.** Put every designed scene in one script (`film.js`) that draws the frame
+   at film time `t`, with scene times in beats. Each clip page (`s1.html` …) sets a window
+   `{from, to}` of that timeline. Scenes then stay in sync with each other and with the music,
+   and a retime is one number.
+3. **Render and place**: `democut motion render --html s1.html --add --start <from>`. A clip is
+   opaque where the scene is designed and transparent where live footage shows through. A wipe
+   between a designed scene and live footage is a shape in the clip moving off the frame.
+   Check a placed clip with `democut frames --rendered --start <s> --end <s> --fps 6`, not a
+   sheet you build yourself.
+4. **Timeline under the clips**: the takes, cut so each live beat sits under its transparent
+   window, with any footage as filler under opaque scenes (it is never seen). Then:
+   - a zoom that must hold up to a cut ends a second after the cut, under the next opaque scene
+     (a zoom starts easing out before its end), and starts a second before its reveal;
+   - move from one framing to the next while an opaque scene covers the footage;
+   - park the pointer off frame (`set_cursor_track` with one event at 0.999, 0.999) in any take
+     where it does nothing;
+   - end a live beat on something the product does (a fade, a panel closing), on the beat.
+5. **Motion blur inside a clip is yours to draw** (`motion render` has no shutter): give each
+   fast mover a directional blur of about a third of the distance it travels in half a frame.
+6. **Music first, then the grid.** Use music only from a file the user gives you
+   (`democut import <file>`); never download tracks or search this Mac for audio. With none,
+   still pick a BPM. Before you time anything, set
+   the BPM in the timeline file; every scene starts on a beat and every new composition on a bar where you can.
+   A hit is a cut or a 0 ms change, never an eased arrival; a move that must land on a beat
+   starts early so it lands there. Read the track's structure (energy per bar) and put its lift
+   on your reveal and its own ending on your end card. If the product's reaction lags the key
+   that causes it, put the reaction on the beat, not the key.
+7. **Sound effects on the hits.** `democut sfx --at <s> --kind whoosh|impact|riser|click|key`
+   places one sound with its hit at that time: one on each hit you designed. `democut sfx --auto`
+   leaves out footage a designed scene hides, so in a film it adds little. Four or five in a
+   film.
+8. **Keep a clip's layers small.** Many full-frame layers in one page (a wall of tiles) make the
+   renderer drop other content with no warning. Pre-render the tiles small
+   (`motion render --size 960x540 --duration 0.1`: a clip is at least 0.05 s, so use its first
+   frame) and let the camera scale them up.
 
-## Banned
+## 4. Scenes
 
-Unless the product's own brand does it, and then only as it does. After each film, tell the user
-every default its frames used anyway.
+Use when · beats · how · pitfall.
 
-- **Look:** a dark void with small things floating in it; glow, flares, orbs, particles;
-  purple-blue or mesh gradients, glass cards; cream paper, serif and "01 / 02" labels; corner
-  labels, frame borders, brackets, HUD readouts; three feature cards in a row, KPI grids, a
-  title over a dimmed screenshot; UI tilted in 3D; a small window on an empty canvas; a sparkle
-  standing in for the product thinking (show the real result).
+1. **Typed title (the device as title).** The hook · 4 beats · the line waits in the muted ink
+   and the product's own cursor types it, one letter a 16th note, no translate, no fade. Frame 0
+   already shows the first words typed · a blank first frame; a title that fades up.
+2. **Flood.** A scene change · half a beat · an object already on screen (a caret, a button, a
+   chip) grows to the full frame in 0.3 s on `in`; the next scene is its colour, or it wipes off
+   the far edge on `expo.out` to uncover live footage · a flood from nowhere.
+3. **Statement on the accent.** One claim · 2 beats · 2 to 3 words at 20 to 25% of the height on
+   the accent ground, the last letter or the full stop landing on the beat · more than one a film
+   is a slide deck.
+4. **Live, staged.** The product working · 5 beats at most · footage through a transparent
+   window, pushed in until the working part fills the frame, cursor at 5 to 7% of the height
+   with the designed press (`cursorPress:"designed"`), one punch-in on a beat · the page's
+   header, footer or a browser bar in frame.
+5. **The number.** A result the product computed · 2 beats + the read · the real value rolls up
+   in numerals of 40 to 50% of the height, values held 2 frames, landing on a beat; then it
+   shrinks onto the real number's own box in the still and is swapped for the real pixels · a
+   number the product did not produce.
+6. **Lifted pieces arrive.** The proof · 4 to 6 beats · crops of one still at their real layout,
+   1.3 to 1.6×: the chart draws on with a left-to-right mask, each stat lands 1.14 → 1 on
+   `expo.out`, 60 ms apart; then everything is still for the read · all pieces at once; pieces
+   rearranged into a layout the product does not have.
+7. **Montage.** Breadth (themes, templates, integrations) · 5 beats · real stills full bleed, cut
+   1, 1, ½, ½, ½, ½, ¼, ¼, ¼, ¼ beats, each with its real name set large; arrivals 1.045 → 1 ·
+   even cuts; invented variants.
+8. **The wall.** "There are many" · 6 beats · pull back from the last montage still to a tilted
+   grid of all of them (scale 1 → 0.27, tilt 30°, 0.95 s `inOut`), then a slow constant drift; a
+   band in the ground colour crosses with the real count · the count must be read from the
+   product, not remembered.
+9. **End card.** Always last · 6 to 8 beats · the band grows to become the ground; mark lands
+   0.8 → 1 `expo.out`, wordmark wipes out from behind it, the URL is typed by the device, a small
+   credit; still for 1.4 s at most.
+
+A live beat may also take one camera move (a push-in, punch-in or pull-back with
+`democut zoom --element`, a click-to-cause cut, a cursor entrance), never more.
+
+## 5. Motion
+
+| Role | Ease | Time |
+| --- | --- | --- |
+| Arrival | `expo.out` or `power4.out` | 0.35 to 0.6 s |
+| Move, camera, mask draw | `inOut` | 0.5 to 0.95 s |
+| Exit, flood | `in` | 0.25 to 0.4 s, cut at its fastest frame |
+| Pop | `spring` damping 0.75 to 0.85 | |
+| Roll, drift, progress | `linear` or held values | |
+
+Landed text is dead still and stays 0.5 s + 0.3 s a word. One hero move per scene; secondary
+moves start 60 to 200 ms after it. Vary the entrances: if two scenes in a row enter the same way,
+change one.
+
+## 6. Truth
+
+- The product on screen is the real site, recorded or captured by DemoCut. No invented UI,
+  numbers, features or claims. A still is shown as the page drew it.
+- Typing and other human actions happen at a person's pace (`--speed natural`, or
+  `--wpm 90` for a typing product). Jump cuts inside typing are fine; speed-ups are not.
+- You may hide a cookie banner and an empty ad slot. Prefer the product's own setting for it.
+- Drive the page with `democut browser` commands (click, type, hover, key). If the shot needs
+  an input they lack and you send it by script, the product's response must be what a person's
+  input produces, and you say so in the delivery.
+- A count ("187 themes") is read from the product on the day, and the read is saved.
+- If the film could be mistaken for the product's own advert, the end card carries a credit line.
+
+## 7. Banned
+
+Unless the product's own brand does it, and then only as it does.
+
+- **Look:** a dark or pale void with small things floating in it (the hero of every scene fills
+  40% of the frame or more); glow, flares, orbs, particles; purple-blue or mesh gradients, glass;
+  cream paper with a serif and "01 / 02" labels; corner labels, frame borders, brackets, HUD
+  readouts; three cards in a row; a title over a dimmed screenshot; a sparkle standing in for the
+  product thinking; a browser window, toolbar or URL bar; a subtitle bar.
 - **Motion:** everything fading in at once, or fading and sliding up; one ease on everything;
-  linear moves that aren't rotation or progress; text moving while it is read, or drifting or
-  pulsing after it lands; a slow push late in a scene; bounce on UI; whole-frame shakes over 3
-  a film; every scene entering the same way; crossfades between worlds; even-speed entrances.
+  text moving while it is read; a slow push late in a scene; bounce on UI; crossfades between
+  worlds; a plain zoomed take for more than 3 s; more than 3 s of live footage in a row.
 - **Content:** invented products, dashboards or buttons; typing into a prompt box as the opener.
 
-## Case law
+**No longer banned in a launch film** (still banned in walkthroughs, storyboards and DemoCut's
+own UI): a palette taken from the product; full-frame floods and bands in the product's colours;
+real UI as a card on a designed ground; a tilted wall of many stills, once a film, never for the
+one thing being read.
 
-Verdicts on earlier films; each still holds.
+## 8. Check before you export
 
-- **Real, popular products** people use and would stop scrolling for; never one safe demo
-  product everywhere, never an invented app. **No face, no bait** ("comment for the link").
-- **Big, legible actions:** three or four large ones that visibly happen; no tiny step lines,
-  tiny UI or dead frames; about 1 s of typing at a person's pace (`--speed natural`, never
-  brisk). **Few elements:** the CTA never drowns.
-- **Honest labels:** a file name, not a bare brand name, on a clip; no product name in our own
-  chrome. **Succinct copy:** the shortest true line, never a list of options on a card.
-- **Pixel-honest edges:** no edge fades or flicker; labels snap to whole pixels.
-- **No inception:** a DemoCut result inside a film is real footage, with no gradient frame
-  inside its preview; loops cut hard at natural boundaries.
-- **Calm, product-agnostic styling:** no brand slabs, dark bands, coloured mattes or borders
-  round screenshots; never tune the palette to the product; judge on a light and a dark
-  UI. **No invented UI:** no notes boxes; a click is a real pointer, not a target circle.
-- **Honest coverage:** never imply cuts that don't exist or show part of the text as all of it.
-- **Sharp previews:** review stills at full resolution.
-- **Real sounds:** recorded, CC0, licence kept; no game or UI sound packs.
-
-## Check before you export
-
-- `democut review --genre launch`: fix `lineUnread`, `deadStretch`, `firstFrameEmpty`,
-  `textBelowFloor`, `endHold` and `pageChrome`. An `info` `textBelowFloor` is small product
-  text: magnify it if the viewer must read it.
-- One `democut frames --rendered --times` sheet of every beat. Describe each frame in a sentence
-  as a stranger would; with the words covered, the frames still tell the story.
-- A 6 fps motion sheet across every lift, whip and push: no jump, labels steady.
-- Notes as `t=4.2s · where · problem → exact change · what stays`, ranked P0, P1, P2; fix the
-  P0s, then the P1s worth it. Never a score out of 10.
+- `democut review --genre launch`, then its sheet of flagged moments: fix `lineUnread`,
+  `deadStretch`, `firstFrameEmpty`, `textBelowFloor`, `endHold` and `pageChrome`. It reads text
+  inside motion clips too. An `info` finding is a hint.
+- **Designed share.** `plainFootage` and `plainStretch` are hints: plain footage (nothing
+  designed over 40% of the frame, the product's picture still) beyond the table's share, or
+  over 3 s in a row. Seconds where the product itself visibly moves don't count, and holding
+  on it can be the right call: you decide.
+- **One contact sheet at 2 fps** of the whole film (`democut frames --rendered --every 0.5`;
+  Look and listen in `democut instructions`). Cover the words: can a stranger tell it from a
+  screen recording in the first three tiles? Is the same composition on screen for more than
+  six tiles?
+- **A 6 to 10 fps motion sheet** across every flood, wipe, roll and pull-back: no jump, no blank
+  frame, blur on the fast frames.
+- **Beat check.** List each scene start in frames beside the beat it should sit on.
+- Judge by sheets, not by single frames. One full re-take at most.
 - One critic pass, with this page and the SPEC as its brief.

@@ -1,6 +1,6 @@
 {
   "name": "democut",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Your coding agent makes the demo video: records your app in DemoCut, edits it and exports an MP4.",
   "skills": "./skills/"
 }
